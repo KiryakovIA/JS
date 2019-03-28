@@ -1,14 +1,4 @@
-/*console.log('Lesson 1');
-var tC = prompt('tC:');
-var tF = (9 / 5) * parseInt(tC) + 32;
-console.log('tF: ' + tF);
-var admin;
-var name = 'Василий';
-admin = name;
-console.log(admin);
-console.log(1000 + '108');*/
-
-console.log('Lesson 2');
+﻿console.log('Lesson 2');
 console.log('Task 1');
 console.log('var a = 1, b = 1, c, d;');
 console.log('c = ++a; console.log(c);     	 // 2 Сначала инкремент для а, потом береться значение а');
@@ -131,8 +121,14 @@ function mathOperation(arg1, arg2, operation)
 }
 
 console.log(null == 0); // false
+console.log(0 == null);
 
-console.log(power(3, 4)); // 
+console.log(null != 0);
+
+console.log(null === 0); // false
+console.log(null !== 0);
+
+console.log(power(3, 4)); // 81
 
 function power(val, pow)
 {
