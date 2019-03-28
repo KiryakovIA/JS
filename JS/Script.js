@@ -13,9 +13,8 @@ console.log('var a = 2;');
 console.log('var x = 1 + (a *= 2);  // x = 5');
 
 console.log('Task 3');
-var a = 1;
-var b = -5;
-
+var a = parseInt(prompt('Введите а'));
+var b = parseInt(prompt('Введите b'));
 if (a >= 0 && b >= 0)
 {
 	console.log(a - b);
@@ -29,8 +28,8 @@ else if (a < 0 && b >= 0 || a >= 0 && b < 0)
 	console.log(a + b);
 }
 
-a = Math.floor((Math.random() * 16));
-console.log('a = ' + a);
+console.log('Task 4');
+a = parseInt(prompt('Введите число от 0 до 15'));
 
 switch(a)
 {
@@ -82,7 +81,35 @@ switch(a)
 	case 15:
 		console.log('15');
 		break;
+
+	default:
+		console.log('Введенное число не в деапазоне м/у 0 и 15');
+		break;
 }
+
+console.log('Task 5');
+a = parseInt(prompt('Введите число a'));
+b = parseInt(prompt('Введите число b'));
+console.log('a + b = ' + addition(a, b));
+console.log('a - b = ' + subtraction(a, b));
+console.log('a * b = ' + multiplication(a, b));
+console.log('a / b = ' + division(a, b));
+
+console.log('Task 6');
+a = parseInt(prompt('Введите число a'));
+b = parseInt(prompt('Введите число b'));
+var operation = parseInt(prompt('Введите операцию. 1 +; 2 -; 3 *; 4 /.'));
+var strOpe = ['+', '-', '*', '/'];
+console.log('a ' + strOpe[operation - 1] + ' b = ' +  mathOperation(a, b, operation));
+
+console.log('Task 7');
+console.log('null == 0 = ' + (null == 0)); // false
+
+
+console.log('Task 8');
+var val = parseInt(prompt('Введите число val'));
+var pow = parseInt(prompt('Введите степень pow'));
+console.log('val ^ pow = ' + power(val, pow));
 
 
 function addition(arg1, arg2)
@@ -109,26 +136,20 @@ function mathOperation(arg1, arg2, operation)
 {
 	switch(operation)
 	{
-		case 'addition':
+		case 1:
 			return addition(arg1, arg2);
-		case 'subtraction':
+		case 2:
 			return subtraction(arg1, arg2);
-		case 'multiplication':
+		case 3:
 			return multiplication(arg1, arg2);
-		case 'division':
+		case 4:
 			return division(arg1, arg2);
+		default:
+			return NaN;
 	}
 }
 
-console.log(null == 0); // false
-console.log(0 == null);
 
-console.log(null != 0);
-
-console.log(null === 0); // false
-console.log(null !== 0);
-
-console.log(power(3, 4)); // 81
 
 function power(val, pow)
 {
