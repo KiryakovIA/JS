@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
 	<style>
-		body{
+		body {
 			margin: 0;
 			width: 100vw;
 			height: 100vh;
 		}
-		.wrap{
+
+		.wrap {
 			height: inherit;
 			width: inherit;
 			background: #000;
 		}
 
-		.img, .albumWrapper{
+		.img,
+		.albumWrapper {
 			width: 100%;
 			display: block;
 		}
 
-		.img{
+		.img {
 			height: 100%;
 			background-image: url('img/background-3.JPG');
 			background-repeat: no-repeat;
 			background-size: contain;
 			background-position: center center;
 		}
-		
-		.albumWrapper{
+
+		.albumWrapper {
 			display: block;
 			background: black;
 			position: absolute;
@@ -36,7 +39,8 @@
 			opacity: 0.08;
 			transition: 0.5s opacity;
 		}
-		.album{
+
+		.album {
 			height: 80%;
 			margin: 10px auto;
 			overflow: hidden;
@@ -45,15 +49,15 @@
 			max-width: 90%;
 		}
 
-		.albumWrapper:hover{
+		.albumWrapper:hover {
 			opacity: 1;
 			transition: 0.3s opacity;
 
 		}
 
-		
 
-		.imgThumb{
+
+		.imgThumb {
 			border: 2px solid transparent;
 			cursor: pointer;
 			display: inline-block;
@@ -67,17 +71,18 @@
 			opacity: 0.6;
 			transition: 0.2s opacity;
 		}
-		.imgThumb:hover{
+
+		.imgThumb:hover {
 			border-color: white;
 			opacity: 1;
 			transition: 0.2s opacity;
 		}
 
-		.album:first-child{
+		.album:first-child {
 			margin-left: 10%;
 		}
 
-		.albumArrow{
+		.albumArrow {
 			cursor: pointer;
 			height: 100%;
 			width: 7%;
@@ -91,46 +96,49 @@
 			background: transparent;
 			transition: 0.2s all;
 		}
-		
-		.albumArrow:active, .albumArrow{
+
+		.albumArrow:active,
+		.albumArrow {
 			outline: none;
 			border-color: transparent;
 		}
-		
-		.albumArrow:hover{
+
+		.albumArrow:hover {
 			opacity: 1;
 			background: rgba(30, 30, 30, 0.4);
 			transition: 0.2s all;
 		}
 
-		.albumArrow:active{
+		.albumArrow:active {
 			background: rgba(50, 50, 50, 0.4);
 		}
 
-		.left{
+		.left {
 			left: 0;
 		}
 
-		.right{
+		.right {
 			right: 0;
 		}
+
 	</style>
 </head>
+
 <body>
 	<div class="wrap">
 		<div class="img">
-			
+
 		</div>
 		<div class="albumWrapper">
 			<div class="album">
-			
+
 			</div>
 			<input type="button" value="&larr;" class="albumArrow left" id="scrollLeft" onclick="galleryApp()">
 			<input type="button" value="&rarr;" class="albumArrow right" id="scrollRight" onclick="galleryApp()">
 		</div>
-		
+
 	</div>
-	
+
 	<template class="galleryItem">
 		<div class="imgThumb"></div>
 	</template>
@@ -140,7 +148,7 @@
 		var galleryItem = document.querySelector('.galleryItem').content;
 		var mainImage = document.querySelector('.img');
 
-		var renderItems = function () {
+		var renderItems = function() {
 			let newItem;
 			let roulette = document.createDocumentFragment();
 
@@ -148,33 +156,50 @@
 				newItem = galleryItem.cloneNode(true);
 				newItem.querySelector('.imgThumb').classList.add('gThumb');
 				newItem.querySelector('.imgThumb').classList.add('thumb' + i);
-				newItem.querySelector('.imgThumb').style.backgroundImage = "url('img/background-"+ (i + 1) +".JPG')";
+				newItem.querySelector('.imgThumb').style.backgroundImage = "url('img/background-" + (i + 1) + ".JPG')";
 				roulette.appendChild(newItem);
 				if (newItem.onerror == true) {
 					i = 1000000;
 					break;
-				} 		
-				
+				}
+
 			}
 			album.appendChild(roulette);
 		};
 
 		renderItems();
 
-		var galleryApp = function () {
+		var number = 2;
+		var galleryApp = function() {
 			if (event.target.classList.contains('gThumb') === true) {
 				mainImage.style.backgroundImage = event.target.style.backgroundImage;
+				number = getNumber(event.target.classList);
+			}
+
+			if (event.target.classList.contains('right') === true) {
+				number++;
+				if (number > cells)
+					number = 0;
 			}
 			
-			if (event.target.classList.contains('right') === true) {
-				alert(1);
-			}
 			if (event.target.classList.contains('left') === true) {
-				album.style.margin
+				number--;
+				if (number < 0)
+					number = cells;
 			}
 		};
 
 		album.addEventListener('click', galleryApp);
+
+		function getNumber(classList) {
+			for (let i = 0; i < classList.length; i++) {
+				if (classList[i].indexOf('thumb') === 0) {
+					return +classList[i].replace('thumb','');
+				}
+			}
+		}
+		
 	</script>
 </body>
+
 </html>
