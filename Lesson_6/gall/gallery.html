@@ -171,21 +171,27 @@
 
 		var number = 2;
 		var galleryApp = function() {
-			if (event.target.classList.contains('gThumb') === true) {
-				mainImage.style.backgroundImage = event.target.style.backgroundImage;
+			let thumb;
+			if (event.target.classList.contains('gThumb')) {
 				number = getNumber(event.target.classList);
-			}
+				thumb = event.target;
 
-			if (event.target.classList.contains('right') === true) {
-				number++;
-				if (number > cells)
-					number = 0;
+			} else if (event.target.classList.contains('albumArrow')) {
+				if (event.target.classList.contains('right')) {
+					number++;
+					if (number > cells)
+						number = 0;
+				}
+
+				if (event.target.classList.contains('left')) {
+					number--;
+					if (number < 0)
+						number = cells;
+				}
+				thumb = document.getElementsByClassName('thumb' + number)[0];
 			}
-			
-			if (event.target.classList.contains('left') === true) {
-				number--;
-				if (number < 0)
-					number = cells;
+			if (thumb != undefined) {
+				mainImage.style.backgroundImage = thumb.style.backgroundImage;
 			}
 		};
 
@@ -194,11 +200,11 @@
 		function getNumber(classList) {
 			for (let i = 0; i < classList.length; i++) {
 				if (classList[i].indexOf('thumb') === 0) {
-					return +classList[i].replace('thumb','');
+					return +classList[i].replace('thumb', '');
 				}
 			}
 		}
-		
+
 	</script>
 </body>
 
