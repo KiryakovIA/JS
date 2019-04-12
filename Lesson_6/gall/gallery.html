@@ -136,13 +136,16 @@
 			<input type="button" value="&larr;" class="albumArrow left" id="scrollLeft">
 			<input type="button" value="&rarr;" class="albumArrow right" id="scrollRight">
 		</div>
-
 	</div>
 
 	<template class="galleryItem">
 		<div class="imgThumb"></div>
 	</template>
 	<script>
+		window.onerror = function() {
+			alert('onerror'); // не срабатывает
+		}
+
 		var album = document.querySelector('.album');
 		var cells = 10;
 		var galleryItem = document.querySelector('.galleryItem').content;
@@ -195,7 +198,7 @@
 			}
 		};
 
-		
+
 		album.addEventListener('click', galleryApp);
 		document.querySelector('.left').addEventListener('click', galleryApp);
 		document.querySelector('.right').addEventListener('click', galleryApp);
@@ -206,7 +209,7 @@
 					return +classList[i].replace('thumb', '');
 				}
 			}
-		}	
+		}
 
 	</script>
 </body>
