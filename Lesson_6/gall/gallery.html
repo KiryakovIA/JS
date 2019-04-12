@@ -133,8 +133,8 @@
 			<div class="album">
 
 			</div>
-			<input type="button" value="&larr;" class="albumArrow left" id="scrollLeft" onclick="galleryApp()">
-			<input type="button" value="&rarr;" class="albumArrow right" id="scrollRight" onclick="galleryApp()">
+			<input type="button" value="&larr;" class="albumArrow left" id="scrollLeft">
+			<input type="button" value="&rarr;" class="albumArrow right" id="scrollRight">
 		</div>
 
 	</div>
@@ -195,7 +195,10 @@
 			}
 		};
 
+		
 		album.addEventListener('click', galleryApp);
+		document.querySelector('.left').addEventListener('click', galleryApp);
+		document.querySelector('.right').addEventListener('click', galleryApp);
 
 		function getNumber(classList) {
 			for (let i = 0; i < classList.length; i++) {
