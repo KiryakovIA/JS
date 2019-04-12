@@ -170,7 +170,7 @@
 		renderItems();
 
 		var number = 2;
-		var galleryApp = function() {
+		var galleryApp = function(event) {
 			let thumb;
 			if (event.target.classList.contains('gThumb')) {
 				number = getNumber(event.target.classList);
@@ -203,7 +203,7 @@
 					return +classList[i].replace('thumb', '');
 				}
 			}
-		}
+		}	
 
 	</script>
 </body>
