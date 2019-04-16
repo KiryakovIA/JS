@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ABOBE PHOTOZHAB</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="head"></div>
+	<p id="time"></p>
+	<div class="canv">
+		<canvas id="canv" width="1000" height="800"></canvas>
+	</div>
+	<div class="tools">
+		<div class="coordinates">
+			<p id="x"><b>x: </b> <span id="xCoord"></span></p>
+			<p id="y"><b>y: </b> <span id="yCoord"></span></p>
+			<br>
+			<button class="toolButton" id='brush'>Кисть</button>
+			<button class="toolButton" id='clear'>Резинка</button>
+			<button class="toolButton" id='not'>Нет</button>
+			<select id='sizeSelect'>
+				<option>5</option>
+				<option>10</option>
+				<option>15</option>
+				<option>20</option>
+			</select>
+			<input type="color" id="color">
+		</div>
+	</div>
+	<script type="text/javascript" src="JS/Script.js"></script>
+</body>
+</html>
