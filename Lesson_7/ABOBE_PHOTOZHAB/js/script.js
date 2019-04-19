@@ -1,9 +1,3 @@
-function a() {
-    console.log(this);
-}
-a.call(null);
-
-
 var canvas = document.querySelector('#canv');
 var ctx = canvas.getContext('2d');
 
