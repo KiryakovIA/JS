@@ -55,9 +55,15 @@ window.addEventListener('mousemove', onmousemove);
 window.addEventListener('click', onclick);
 window.addEventListener('change', onchange);
 
-function setDateTime() {
-	document.querySelector('#time').innerText = new Date();
+setDateTime();
+function setDateTime(){	
+	var el = document.querySelector('#time');
+	var fun = function() {
+		el.innerText = new Date();
+	}
+	fun();
+	setInterval( fun, 1000);
 }
 
-setDateTime();
-window.setInterval(setDateTime, 1000);
+
+
